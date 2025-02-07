@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day Gift</title>
+    <style>
+        body {
+            background-color: #ffdde1;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        h1 {
+            color: #d6336c;
+        }
+
+        .rose {
+            width: 100px;
+            height: 150px;
+            position: relative;
+            margin: 50px auto;
+        }
+
+        .petal {
+            width: 50px;
+            height: 80px;
+            background: red;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        .petal:nth-child(1) {
+            transform: rotate(-30deg);
+            left: 10px;
+            top: 20px;
+        }
+
+        .petal:nth-child(2) {
+            transform: rotate(30deg);
+            left: 40px;
+            top: 20px;
+        }
+
+        .stem {
+            width: 10px;
+            height: 100px;
+            background: green;
+            position: absolute;
+            left: 45px;
+            top: 90px;
+        }
+
+        #message {
+            font-size: 20px;
+            color: #b91d47;
+            display: none;
+            margin-top: 20px;
+        }
+
+        .btn {
+            background-color: #ff4081;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #d81b60;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .petal-fall {
+            position: absolute;
+            background: red;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            top: -20px;
+            animation: fall linear infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Happy Rose Day 🌹</h1>
+
+    <div class="rose">
+        <div class="petal"></div>
+        <div class="petal"></div>
+        <div class="stem"></div>
+    </div>
+
+    <button class="btn" onclick="showMessage()">Reveal Your Message</button>
+
+    <p id="message">🌹 You are as beautiful as this rose! 🌹</p>
+
+    <script>
+        function showMessage() {
+            document.getElementById("message").style.display = "block";
+        }
+
+        function createFallingPetals() {
+            for (let i = 0; i < 15; i++) {
+                let petal = document.createElement("div");
+                petal.classList.add("petal-fall");
+                petal.style.left = Math.random() * window.innerWidth + "px";
+                petal.style.animationDuration = (3 + Math.random() * 3) + "s";
+                document.body.appendChild(petal);
+            }
+        }
+
+        createFallingPetals();
+    </script>
+
+</body>
+</html>
